@@ -1,0 +1,218 @@
+import React, { useState } from "react";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Badge,
+  Menu,
+  MenuItem,
+  Typography,
+  Box,
+  Avatar,
+  // TextField,
+  // InputAdornment,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  CssBaseline,
+} from "@mui/material";
+import {
+  Menu as MenuIcon,
+  // Search,
+  Notifications,
+  Mail,
+  // AccountCircle,
+} from "@mui/icons-material";
+import img from "./pet1.png";
+// import img1 from './img1.jpg'
+import img2 from "./man.png";
+import SettingsSuggestOutlinedIcon from '@mui/icons-material/SettingsSuggestOutlined';
+// import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import LogoutIcon from '@mui/icons-material/Logout';
+import SettingsIcon from '@mui/icons-material/Settings';
+import ListIcon from '@mui/icons-material/List';
+import PaymentIcon from '@mui/icons-material/Payment';
+import AnalyticsIcon from '@mui/icons-material/Analytics';
+import FeedbackIcon from '@mui/icons-material/Feedback';
+import HomeIcon from '@mui/icons-material/Home';
+// import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import img3 from './files.png'
+import img4 from './services.png'
+const drawerWidth = 250;
+
+const Header = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const handleProfileMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const toggleDrawer = (open) => {
+    setDrawerOpen(open);
+  };
+
+  return (
+    <Box sx={{ display: "flex" }}>
+      <CssBaseline />
+      {/* Sidebar */}
+      <Drawer
+        anchor="left"
+        open={drawerOpen}
+        onClose={() => toggleDrawer(false)}
+        sx={{
+          [& .MuiDrawer-paper]: {
+            width: drawerWidth,
+            boxSizing: "border-box",
+          },
+        }}
+      >
+        <Toolbar />
+        <List>
+          <ListItem button>
+           <HomeIcon/> <ListItemText primary="Dashboard" sx={{ml:1}}/>
+          </ListItem>
+          <ListItem button>
+           <ManageAccountsIcon/> <ListItemText primary="Manage User" sx={{ml:1}}/>
+          </ListItem>
+          <ListItem button>
+         <SettingsSuggestOutlinedIcon/><ListItemText primary="Manage Pet Adoption" sx={{ml:1}}/>
+          </ListItem>
+          <ListItem button>
+    <img src={img3} alt="Manage Pet" width="24" height="24" />
+    <ListItemText primary="Manage Pet Details" sx={{ ml: 1 }} />
+</ListItem>
+
+          <ListItem button>
+           <ListIcon/> <ListItemText primary="Manage booking " sx={{ml:1}}/>
+          </ListItem>
+          <ListItem button>
+          <img src={img4} alt="Manage Pet" width="24" height="24" /> <ListItemText primary="Services" sx={{ml:1}}/>
+          </ListItem>
+          <ListItem button>
+           <PaymentIcon/> <ListItemText primary="Payments" sx={{ml:1}}/>
+          </ListItem>
+          <ListItem button>
+           <AnalyticsIcon/> <ListItemText primary="Reporting" sx={{ml:1}}/>
+          </ListItem>
+          <ListItem button>
+           <FeedbackIcon/> <ListItemText primary="Feedback" sx={{ml:1}}/>
+          </ListItem>
+          <ListItem button>
+            <SettingsIcon/><ListItemText primary="Settings" sx={{ml:1}} />
+          </ListItem>
+          <ListItem button>
+            <LogoutIcon/> <ListItemText primary="Logout" sx={{ml:1}}/>
+          </ListItem>
+        </List>
+      </Drawer>
+      {/* Main Content */}
+      <Box
+        sx={{
+          flexGrow: 1,
+          transition: "margin 0.3s",
+          marginLeft: drawerOpen ? ${drawerWidth}px : 0,
+        }}
+      >
+        <AppBar
+          position="fixed"
+          sx={{
+            backgroundColor: "#fff",
+            color: "#2c3e50",
+            boxShadow: 2,
+            zIndex: 1201,
+          }}
+        >
+          <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+            {/* Sidebar Toggle & Logo */}
+            <Box display="flex" alignItems="center">
+              <Box sx={{ mt: 2 }}>
+                <img src={img} alt="Pet Heaven" width="40" height="40" />
+              </Box>
+              <Typography
+                variant="h6"
+                sx={{
+                  ml: 1,
+                  fontWeight: "bold",
+                  fontFamily: "Nunito, sans-serif",
+                  fontSize: "30px",
+                }}
+              >
+                Pet Heaven
+              </Typography>
+              <IconButton
+                sx={{ marginLeft: "5px" }}
+                edge="start"
+                color="inherit"
+                onClick={() => toggleDrawer(!drawerOpen)}
+              >
+                <MenuIcon sx={{ fontSize: "36px" }} />
+              </IconButton>
+            </Box>
+
+            {/* Search Bar */}
+            {/* <TextField
+              variant="outlined"
+              size="small"
+              placeholder="Search"
+              sx={{ width: 250, backgroundColor: "#f5f5f5", borderRadius: 1 }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Search />
+                  </InputAdornment>
+                ),
+              }}
+            /> */}
+
+            {/* Right Icons */}
+            <Box display="flex" alignItems="center" gap={1}>
+              <IconButton color="inherit">
+                <Badge badgeContent={4} color="primary">
+                  <Notifications />
+                </Badge>
+              </IconButton>
+              <IconButton color="inherit">
+                <Badge badgeContent={3} color="success">
+                  <Mail />
+                </Badge>
+              </IconButton>
+              <IconButton gap={1} onClick={handleProfileMenuOpen}>
+              <img src={img2}  alt="Pet Heaven" width="40" height="40" style={{borderRadius:"50%"}} /><Typography fontSize="18px" color="primary"  >Vishal</Typography>
+              </IconButton>
+
+              {/* Profile Dropdown */}
+              <Menu
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleMenuClose}
+              >
+                <MenuItem onClick={handleMenuClose}>
+                  <Avatar src={img2} sx={{ mr: 1 }} /> My Profile
+                </MenuItem>
+                <MenuItem onClick={handleMenuClose}>Account Settings</MenuItem>
+                <MenuItem onClick={handleMenuClose}>Need Help?</MenuItem>
+                <MenuItem onClick={handleMenuClose}>Sign Out</MenuItem>
+              </Menu>
+            </Box>
+          </Toolbar>
+        </AppBar>
+        <Toolbar />
+        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <Typography variant="h4">Welcome to Pet Heaven</Typography>
+          <Typography variant="body1">
+            Dashboard
+          </Typography>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+export default Header;

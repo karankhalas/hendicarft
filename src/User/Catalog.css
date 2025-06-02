@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffea;
+  }
+  
+  .header {
+    background: #333;
+    color: white;
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .catalog {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: right;
+    padding: 20px;
+  }
+  
+  .product {
+    width: 100%;
+    max-width: 400px; /* Adjust as needed */
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+  
+  .product img {
+    width: 100%;
+    height: auto;  /* Ensures aspect ratio */
+    display: block; /* Avoids extra spacing */
+    object-fit: cover; /* Properly fills the div */
+    border-radius: 5px;
+}
+  
+  
+  
