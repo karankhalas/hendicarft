@@ -119,7 +119,7 @@ const App = () => {
         sx={{
           top: "35.5px",
           zIndex: 1200,
-          backgroundColor: "snow",
+          backgroundColor: "#ffffdb",
         }}
       >
         <Toolbar sx={{ justifyContent: "space-between" }}>

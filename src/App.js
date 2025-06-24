@@ -142,8 +142,12 @@ import ContactUS from "./User/ContactUS";
 import Wishlist from "./User/Wishlist";
 import Cart from "./User/Cart";
 import Checkout from "./User/Checkout"
+import Payment from "./User/Payment"
 import Navbar from "../src/Admin/Navbar";
 import Footer from "./User/Footer";
+import Pp from "./User/Pp";
+import Termscontion from "./User/Termscondition";
+import Orderandreturn from "./User/Orderandreturn";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Purse from "../src/User/Purse";
 import Dandiya from "../src/User/Dandiya";
@@ -152,10 +156,12 @@ import Jewellery from "../src/User/Jewellery";
 import Registraion from './User/Registraion'
 import Login from './User/Login';
 import Logout from './User/Logout'
+import Placeorder from './User/Placeorder'
 import Myprofile from './User/Myprofile'
 import { WishlistProvider } from "./Wishcontext";
 import { CartProvider } from "./Cartcontext";
 import { AuthProvider } from "../src/User/Authcontext";
+import TermsConditions from "./User/Termscondition";
 
 function App() {
   return (
@@ -175,15 +181,20 @@ function App() {
           <Route path="/wishlist" element={<Wishlist />}/>
           <Route path="cart" element={<Cart />}/>
           <Route path="/checkout"element={<Checkout />}/>
+          <Route path="/placeorder" element={<Placeorder />}/>
+          <Route path="/payment" element={<Payment />}/>
           <Route path="/logout" element={<Logout />} />
           <Route path="/profile" element={<Myprofile />} />
-
           <Route path="/Purse" element={<Purse />} />
           <Route path="/Dandiya" element={<Dandiya />} />
           <Route path="/Toran" element={<Toran />} />
           <Route path="/Jewellery" element={<Jewellery />} />
           <Route path="/registration" element={<Registraion />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/pp" element={<Pp />} />
+        <Route path="/termscondition" element={<TermsConditions />} />
+        <Route path="/orderandreturn" element={<Orderandreturn />} />
+        
         </Routes>
         <Footer />
       </Router>

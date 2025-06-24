@@ -16,6 +16,10 @@ import { auth, db } from "../../src/Confing/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { collection, addDoc } from "firebase/firestore";
 import { useAuth } from "../User/Authcontext";
+import { doc, setDoc } from "firebase/firestore"; // Instead of addDoc
+
+// Inside handleSubmit
+
 
 const RegistrationPage = () => {
   const navigate = useNavigate();
@@ -45,14 +49,15 @@ const RegistrationPage = () => {
       const user = userCredential.user;
 
       // Save additional user info to Firestore
-      await addDoc(collection(db, "registration"), {
-        uid: user.uid,
-        name: formData.name,
-        email: formData.email,
-        mobileno: formData.mobileno,
-        gender: formData.gender,
-        createdAt: new Date(),
-      });
+      await setDoc(doc(db, "registration", user.uid), {
+  uid: user.uid,
+  name: formData.name,
+  email: formData.email,
+  mobileno: formData.mobileno,
+  gender: formData.gender,
+  createdAt: new Date(),
+});
+
 
       // Save user to context
       login({ email: user.email, uid: user.uid });

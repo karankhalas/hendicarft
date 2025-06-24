@@ -97,27 +97,39 @@ function DogShow() {
                   }}
                   onClick={() => handleImageClick(pet.image)}
                 />
-                <CardContent sx={{ width: "100%" }}>
-                  <Typography variant="h6" fontWeight="bold" gutterBottom>
-                    {pet.name}
-                  </Typography>
+                <CardContent
+                  sx={{
+                    width: "100%",
+                    p: 2,
+                    display: "flex",
+                    flexDirection: "column",
+                    height: "100%",
+                  }}
+                >
+                  <Box sx={{ flexGrow: 1 }}>
+                    <Typography
+                      variant="h6"
+                      fontWeight="bold"
+                      gutterBottom
+                      noWrap
+                    >
+                      {pet.name}
+                    </Typography>
 
-                  <Typography variant="body2" gutterBottom sx={{ mb: 1 }}>
-                    <strong>Description:</strong> {pet.description}
-                  </Typography>
-
-                  <Typography variant="body2" gutterBottom sx={{ mb: 2 }}>
-                    <strong>Price:</strong> ₹{pet.price}
-                  </Typography>
+                    <Typography variant="body2" gutterBottom sx={{ mb: 1 }}>
+                      <strong>Description:</strong> {pet.description}
+                    </Typography>
+                    <Typography variant="body2" gutterBottom>
+                      <strong>Price:</strong> ₹{pet.price}
+                    </Typography>
+                  </Box>
 
                   <Stack
                     direction="row"
                     spacing={1}
-                    sx={{
-                      width: "100%",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                    }}
+                    alignItems="center"
+                    justifyContent="space-between"
+                    sx={{ mt: 2 }}
                   >
                     <IconButton
                       color="error"
@@ -132,9 +144,10 @@ function DogShow() {
                       color="primary"
                       onClick={() => addToCart({ ...pet })}
                       sx={{
-                        flex: 1,
+                        flexGrow: 1,
                         textTransform: "none",
                         fontWeight: "500",
+                        whiteSpace: "nowrap",
                       }}
                       startIcon={<ShoppingCartOutlinedIcon />}
                     >
